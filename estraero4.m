@@ -2,6 +2,7 @@ clear all
 
 % Geometria
 
+H0 = 0;
 H1 = 0.45;
 H2 = 0.9;
 L  = 1.2;
