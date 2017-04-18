@@ -1,0 +1,953 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass article
+\begin_preamble
+\usepackage{listings}
+\usepackage{color} %red, green, blue, yellow, cyan, magenta, black, white
+\usepackage{courier}
+\usepackage{verbatim}
+\definecolor{mygreen}{RGB}{66,152,33} % color values Red, Green, Blue
+\definecolor{mylilas}{RGB}{170,55,241}
+\definecolor{myblue}{RGB}{31,1,255}
+\lstset{
+%flexiblecolumns=true,
+    language=Matlab,
+    basicstyle=\small\ttfamily,
+    breaklines=true,%
+    morekeywords={matlab2tikz},
+    keywordstyle=\color{black},%
+    morekeywords=[2]{1}, keywordstyle=[2]{\color{black}},
+    identifierstyle=\color{black},%
+    stringstyle=\color{mylilas},
+    commentstyle=\color{mygreen},%
+    showstringspaces=false,%without this there will be a symbol in the places where there is a space
+    numbers=left,%
+    numberstyle={\tiny \color{black}},% size of the numbers
+    numbersep=9pt, % this defines how far the numbers are from the text
+    emph=[1]{for,end,break},emphstyle=[1]\color{myblue}, %some words to emphasise
+    %emph=[2]{word1,word2}, emphstyle=[2]{style},   
+}
+\end_preamble
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 3cm
+\topmargin 3cm
+\rightmargin 4cm
+\bottommargin 3cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+
+\lang spanish
+Ejercicio 4: Estructura de Vigas 2D
+\end_layout
+
+\begin_layout Author
+
+\lang spanish
+Pablo Oshiro, Xavier Escribà
+\end_layout
+
+\begin_layout Date
+
+\lang spanish
+18/04/2017
+\end_layout
+
+\begin_layout Section*
+
+\lang spanish
+Problema 1
+\end_layout
+
+\begin_layout Subsection*
+
+\lang spanish
+Introducción
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+En este problema, al no tener cargas repartidas no será necesario subdividir
+ los elementos, de forma que trabajaremos con cuatro elementos en total.
+ El tratamiento que se le aplica al cable es el de una viga que solo soporta
+ esfuerzos axiales.
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+
+\lang spanish
+\begin_inset Graphics
+	filename enunciat.png
+	width 7cm
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+
+\lang spanish
+Resolución del problema
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+Para resolver este problema se ha utilizado la metodología del ejercicio
+ 3 para desarrollar un código Matlab trabajando con elementos de viga, de
+ forma matricula.
+ Se pedía en este ejercicio determinar el problema con un pretensado del
+ cable, para incorporar tal pretensado en los cálculos, se ha descompuesto
+ vectorialmente la fuerza y se ha incorporado como fuerza externa en los
+ nodos A y B.
+ Se han graficado los diagramas obtenidos en subplots para cada elemento:
+\end_layout
+
+\begin_layout Standard
+\align left
+
+\lang spanish
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename /Users/Escriba/el1np.eps
+	width 15cm
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+
+\lang spanish
+\begin_inset Graphics
+	filename /Users/Escriba/el2np.eps
+	width 15cm
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename /Users/Escriba/el3np.eps
+	width 15cm
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename /Users/Escriba/el4np.eps
+	width 15cm
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+El 
+\lang spanish
+elemento
+\lang english
+ 3 es el 
+\lang spanish
+correspondiente
+\lang english
+ al cable, el diagrama indica que está bajo un esfuerzo cortante, pero dicho
+ esfuerzo es de un orden despreciable, de forma que el tratamiento del elemento
+ como un cable se puede comprobar que es correcto.
+\end_layout
+
+\begin_layout Standard
+Para añadir el efecto del pretensado, se ha añadido como esfuerzo exterior
+ en los nodos A y B, descomponiendo vectorialmente el pretensado, se ha
+ aplicado el siguiente en cada dirección (se muestra el valor absoluto,
+ en el código se ha tenido que seguir el criterio de signos): 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\begin{cases}
+x= & 2340.8\,N\\
+y= & 877.8\,N
+\end{cases}
+\]
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Al aplical el pretensado se han obtenido los siguientes diagramas de esfuerzos:
+\end_layout
+
+\begin_layout Standard
+\align left
+
+\lang spanish
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename /Users/Escriba/el1p.eps
+	width 15cm
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+
+\lang spanish
+\begin_inset Graphics
+	filename /Users/Escriba/el2p.eps
+	width 15cm
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename /Users/Escriba/el3p.eps
+	width 15cm
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename /Users/Escriba/el4p.eps
+	width 15cm
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+
+\lang spanish
+Conclusiones y observaciones
+\end_layout
+
+\begin_layout Standard
+Comparando todos los diagramas de momento obtenidos, podemos observar que
+ mediante la inclusión de un pretensado en el cable, se ha obtenido una
+ disminución del normal, cortante y momento en el elemento dos, que es el
+ correspondiente a la barra AC.
+ También se ha observado un augmento en la tensión axial del cable, totalmente
+ normal, dado el echo que lo hemos pretensado.
+ Se puede observar una menor tensión axial en el elemento cuatro (correspondient
+e a la barra BC), debido a la descarga de tensión que se consigue con el
+ pretensado del cable.
+ Se puede ver que el pretensado del cable es una opción muy interessante
+ en el caso que dicho cable pueda soportar la carga adicional, ya que ayuda
+ a disminuir las cargas a las que trabaja la estructura.
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+
+\lang spanish
+Problema 2
+\end_layout
+
+\begin_layout Subsection*
+
+\lang spanish
+Introducción
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+En el segundo problema se pide resolver un ejercicio cambiando una sujección
+ por un pasador.
+ Para estudiar el caso del pasador, se ha forzado la viga AB a trabajar
+ solo con esfuerzos axiales, restringiendo el giro en el nodo A.
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+
+\lang spanish
+\begin_inset Graphics
+	filename enunciat2.png
+	width 13cm
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+
+\lang spanish
+Resolución del problema
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+Para resolver el primer caso propuesto, se ha restringido el movimiento
+ vertical y horizontal del nodo A, también se ha restringido todo movimiento
+ del nodo C.
+ Para resolver el caso del pasador, se ha introducido un grado de libertad
+ para el giro en el nodo A.
+ La solución de la estructura sigue la misma estructura que el primer problema
+ de este ejercicio, simplemente hay que situar la nueva situación de los
+ nodos, conectividades, esfuerzos aplicados y restricciones.
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+Para el caso fijo se han obtenido los siguientes diagramas de esfuerzos;
+\end_layout
+
+\begin_layout Standard
+\align left
+
+\lang spanish
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename /Users/Escriba/primel1.eps
+	width 15cm
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+
+\lang spanish
+\begin_inset Graphics
+	filename /Users/Escriba/primel2.eps
+	width 15cm
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename /Users/Escriba/primel3.eps
+	width 15cm
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+En el caso del pasador los resultados han estado estos: 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align left
+
+\lang spanish
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename /Users/Escriba/segel1.eps
+	width 15cm
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+
+\lang spanish
+\begin_inset Graphics
+	filename /Users/Escriba/segel2.eps
+	width 15cm
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename /Users/Escriba/segel3.eps
+	width 15cm
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+
+\lang spanish
+Conclusiones y observaciones
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+En general, al comparar los dos resultados obtenidos, podemos ver que poniendo
+ un pasador en vez de inmobilizar la pieza, se consiguen unos esfuerzos
+ significativamente menores de las barras, pudiendo utilizar en un caso
+ de aplicación, barras mas pequeñas para la misma estructura con la misma
+ carga aplicada.
+ Sin embargo, se ha detectado un problema en los resultados, mientras que
+ el tercer elemento no tiene axil, caso correcto por la geometria del problema,
+ al restringir el giro del punto B para hacer que se comporte como un pasador,
+ no se consigue dicho efecto en los diagramas de esfuerzo, ya que dicho
+ elemento debería experimentar solamente esfuerzo axil por la condición
+ de tener un pasador en los dos extremos, pero el resultado obtenido muestra
+ esfuerzo cortante i momento, no hemos conseguido determinar cual ha estado
+ el error en dicho cálculo.
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+
+\lang spanish
+Anexo 1: Código Matlab utilizado para la resolución del primer ejercicio
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstinputlisting{untitled1.m}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+
+\lang spanish
+Anexo 2: Código Matlab utilizado para la resolución del segundo ejercicio
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstinputlisting{untitled2.m}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
